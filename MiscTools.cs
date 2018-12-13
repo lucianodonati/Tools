@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 namespace Luciano
@@ -75,5 +76,18 @@ namespace Luciano
             }
         }
         #endregion
+
+        #region ICollection
+        /// <summary>
+        /// Checks if a collection is null or empty
+        /// </summary>
+        /// <param name="collection">The collection to check</param>
+        /// <returns>Whether the collection is null or empty</returns>
+        public static bool IsNullOrEmpty(this ICollection collection)
+        {
+            return null == collection || collection.Count == 0;
+        }
+        #endregion
+
     }
 }
