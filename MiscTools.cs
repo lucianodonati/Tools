@@ -87,7 +87,26 @@ namespace Luciano
         {
             return null == collection || collection.Count == 0;
         }
-        #endregion
 
+        /// <summary>
+        /// Checks if an array is null or empty
+        /// </summary>
+        /// <param name="collection">The array to check</param>
+        /// <returns>Whether the array is null or empty</returns>
+        public static bool IsNullOrEmpty<T>(this T[] array)
+        {
+            return null == array || array.Length == 0;
+        }
+
+        /// <summary>
+        /// Checks if a string is null or empty
+        /// </summary>
+        /// <param name="collection">The string to check</param>
+        /// <returns>Whether the string is null or empty</returns>
+        public static bool IsNullOrEmpty(this string str)
+        {
+            return string.IsNullOrEmpty(str);
+        }
+        #endregion
     }
 }
