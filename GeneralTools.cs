@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 
-namespace Luciano
+namespace Luciano.Tools
 {
     /// <summary>
     /// Class in charge of defining extension methods and miscellaneous tools.
     /// </summary>
-    public static class MiscTools
+    public static class GeneralTools
     {
         #region Transform
         /// <summary>
@@ -75,6 +76,26 @@ namespace Luciano
                 rectTransform.Reset();
             }
         }
+        #endregion
+
+        #region Camera
+        public static Bounds OrthographicBounds(this Camera camera)
+        {
+            if (!camera.orthographic)
+            {
+                throw new Exception("Can't get OrtographicBounds on a Perspective Camera.");
+            }
+
+            float screenAspect = (float)Screen.currentResolution.width / Screen.currentResolution.height;
+            float cameraHeight = camera.orthographicSize * 2;
+
+            Bounds bounds = new Bounds(
+                camera.transform.position,
+                new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+
+            return bounds;
+        }
+
         #endregion
 
         #region ICollection
